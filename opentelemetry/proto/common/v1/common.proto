@@ -64,6 +64,9 @@ message KeyValueList {
 message KeyValue {
   string key = 1;
   AnyValue value = 2;
+  // Schema id defined in the current scope or resource, if empty it refers to the
+  // default schema.
+  string schema_id = 3;
 }
 
 // InstrumentationScope is a message representing the instrumentation scope information
@@ -78,4 +81,11 @@ message InstrumentationScope {
   // attribute with the same key).
   repeated KeyValue attributes = 3;
   uint32 dropped_attributes_count = 4;
+}
+
+// Schema is a schema extension that defines a id that reference to a URL, that
+// can be used in the current scope or resource.
+message Schema {
+  string id = 1;
+  string url = 2;
 }

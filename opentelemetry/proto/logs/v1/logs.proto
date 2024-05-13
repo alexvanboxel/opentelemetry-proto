@@ -61,6 +61,10 @@ message ResourceLogs {
   // This schema_url applies to the data in the "resource" field. It does not apply
   // to the data in the "scope_logs" field which have their own schema_url field.
   string schema_url = 3;
+
+  // List of schema extensions, a pair of schema id and url that additionally
+  // typed attributes could reference in the current resource
+  repeated opentelemetry.proto.common.v1.Schema schema_extensions = 4;
 }
 
 // A collection of Logs produced by a Scope.
@@ -78,6 +82,10 @@ message ScopeLogs {
   // https://opentelemetry.io/docs/specs/otel/schemas/#schema-url
   // This schema_url applies to all logs in the "logs" field.
   string schema_url = 3;
+
+  // List of schema extensions, a pair of schema id and url that additionally
+  // typed attributes could reference in the current scope
+  repeated opentelemetry.proto.common.v1.Schema schema_extensions = 4;
 }
 
 // Possible values for LogRecord.SeverityNumber.

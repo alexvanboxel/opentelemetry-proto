@@ -61,6 +61,10 @@ message ResourceSpans {
   // This schema_url applies to the data in the "resource" field. It does not apply
   // to the data in the "scope_spans" field which have their own schema_url field.
   string schema_url = 3;
+
+  // List of schema extensions, a pair of schema id and url that additionally
+  // typed attributes could reference in the current resource
+  repeated opentelemetry.proto.common.v1.Schema schema_extensions = 4;
 }
 
 // A collection of Spans produced by an InstrumentationScope.
@@ -78,6 +82,10 @@ message ScopeSpans {
   // https://opentelemetry.io/docs/specs/otel/schemas/#schema-url
   // This schema_url applies to all spans and span events in the "spans" field.
   string schema_url = 3;
+
+  // List of schema extensions, a pair of schema id and url that additionally
+  // typed attributes could reference in the current scope
+  repeated opentelemetry.proto.common.v1.Schema schema_extensions = 4;
 }
 
 // A Span represents a single operation performed by a single component of the system.
